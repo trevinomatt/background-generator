@@ -1,56 +1,18 @@
-var database = [
-	{
-		username: "Matthew",
-		password: "password"
-	},
-	{
-		username: "Engeline",
-		password: "password"
-	},
-	{
-		username: "Ava",
-		password: "password"
-	}
-];
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
 
-var newsFeed = [
-	{
-		username: "Engeline",
-		timeline: "This is some fun stuff!"
-	},
-	{
-		username: "Ava",
-		timeline: "I'm so bored!"
-	},
-	{
-		username: "Korben",
-		timeline: "I'm going to beat up Leopold"
-	}
-];
+function setGradient() {
+		body.style.background = 
+		"linear-gradient(to right, " 
+		+ color1.value 
+		+ ", " 
+		+ color2.value 
+		+ ")";
 
-
-function isUserValid (username, password) {
-
-	for (var i=0; i < database.length; i ++) {
-		if (database[i].username === username &&
-			database[i].password === password) {
-			return true;
-		} 
-	}
-	return false;
+		css.textContent = body.style.background + ";";
 }
 
-function signIn(username,password) {
-
-	if (isUserValid(username, password)) {
-		console.log(newsFeed);
-	} else {
-		alert ('Sorry, wrong username and password.');
-	}
-}
-
-var userNamePrompt = prompt("What\'s your username?");
-var passwordPrompt = prompt("What\'s your password?");
-
-
-signIn(userNamePrompt, passwordPrompt);
+color1.addEventListener("input", setGradient);
+color2.addEventListener("input", setGradient);
